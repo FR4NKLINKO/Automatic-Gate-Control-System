@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 620" width="1040" height="620" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#475569" />
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626" />
+    </marker>
+    
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#0f172a" flood-opacity="0.08" />
+    </filter>
+  </defs>
+
+  
+  <rect width="1040" height="620" fill="#f8fafc" rx="12" />
+
+  
+  <text x="520" y="42" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">
+    Diagram stanów sterownika bramy (Arduino)
+  </text>
+  <text x="520" y="64" text-anchor="middle" font-size="12.5" fill="#64748b">
+    Stany zdefiniowane przez #define i obsługiwane przez switch (stan)
+  </text>
+
+  
+
+  
+  <circle cx="45" cy="140" r="9" fill="#0f172a" />
+  <path d="M 54 140 L 97 140" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+
+  
+  <path d="M 280 140 L 392 140" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+  <text x="336" y="130" text-anchor="middle" font-size="12" font-weight="600" fill="#334155">POWER</text>
+
+  
+  <path d="M 585 140 L 742 140" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+  <text x="664" y="130" text-anchor="middle" font-size="12" font-weight="600" fill="#334155">Cel: 0° / 180°</text>
+
+  
+  <path d="M 800 174 C 795 340, 745 450, 588 482" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+  <text x="745" y="348" text-anchor="middle" font-size="12" font-weight="600" fill="#334155">POWER</text>
+
+  
+  <path d="M 395 500 L 205 500 Q 190 500 190 485 L 190 177" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+  <text x="202" y="345" text-anchor="start" font-size="12" font-weight="600" fill="#334155">Cel: 90° / 90°</text>
+
+  
+  <path d="M 455 174 L 455 283" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+  <text x="445" y="224" text-anchor="end" font-size="11.5" font-weight="600" fill="#334155">POWER</text>
+  <text x="445" y="240" text-anchor="end" font-size="11.5" font-weight="600" fill="#d97706">lub PIR = HIGH</text>
+
+  
+  <path d="M 525 286 L 525 177" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+  <text x="535" y="224" text-anchor="start" font-size="11.5" font-weight="600" fill="#334155">POWER</text>
+  <text x="535" y="240" text-anchor="start" font-size="11" fill="#64748b">(kier.: OTWIERANIE)</text>
+
+  
+  <path d="M 455 466 L 455 357" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+  <text x="445" y="415" text-anchor="end" font-size="11.5" font-weight="600" fill="#334155">POWER</text>
+
+  
+  <path d="M 525 354 L 525 463" stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+  <text x="535" y="406" text-anchor="start" font-size="11.5" font-weight="600" fill="#334155">POWER</text>
+  <text x="535" y="422" text-anchor="start" font-size="11" fill="#64748b">(kier.: ZAMYKANIE)</text>
+
+  
+  <path d="M 585 500 L 722 500" stroke="#dc2626" stroke-width="2.2" fill="none" marker-end="url(#arrow-red)" />
+  <text x="654" y="520" text-anchor="middle" font-size="12" font-weight="700" fill="#dc2626">PIR = HIGH</text>
+
+  
+  <path d="M 860 466 L 860 177" stroke="#dc2626" stroke-width="2.2" fill="none" marker-end="url(#arrow-red)" />
+  <text x="872" y="314" text-anchor="start" font-size="12" font-weight="700" fill="#dc2626">Cel: 0° / 180°</text>
+  <text x="872" y="332" text-anchor="start" font-size="11" fill="#64748b">(ignoruje POWER i PIR)</text>
+
+  
+
+  
+  <g filter="url(#shadow)">
+    <rect x="100" y="106" width="180" height="68" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2" />
+    <text x="190" y="133" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">STAN_ZAMKNIETA (0)</text>
+    <text x="190" y="153" text-anchor="middle" font-size="11.5" fill="#475569">Pozycja: 90° / 90° | LED: OFF</text>
+  </g>
+
+  
+  <g filter="url(#shadow)">
+    <rect x="395" y="106" width="190" height="68" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2" />
+    <text x="490" y="133" text-anchor="middle" font-size="13" font-weight="700" fill="#065f46">STAN_OTWIERANIE (2)</text>
+    <text x="490" y="153" text-anchor="middle" font-size="11.5" fill="#475569">Cel: 0° / 180° | LED: ON</text>
+  </g>
+
+  
+  <g filter="url(#shadow)">
+    <rect x="745" y="106" width="190" height="68" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2" />
+    <text x="840" y="133" text-anchor="middle" font-size="13" font-weight="700" fill="#1e3a8a">STAN_OTWARTA (1)</text>
+    <text x="840" y="153" text-anchor="middle" font-size="11.5" fill="#475569">Pozycja: 0° / 180° | LED: OFF</text>
+  </g>
+
+  
+  <g filter="url(#shadow)">
+    <rect x="395" y="286" width="190" height="68" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2" />
+    <text x="490" y="313" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">STAN_ZATRZYMANA (4)</text>
+    <text x="490" y="333" text-anchor="middle" font-size="11.5" fill="#475569">Stop (pamięta kierunek) | LED: OFF</text>
+  </g>
+
+  
+  <g filter="url(#shadow)">
+    <rect x="395" y="466" width="190" height="68" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2" />
+    <text x="490" y="493" text-anchor="middle" font-size="13" font-weight="700" fill="#065f46">STAN_ZAMYKANIE (3)</text>
+    <text x="490" y="513" text-anchor="middle" font-size="11.5" fill="#475569">Cel: 90° / 90° | LED: ON</text>
+  </g>
+
+  
+  <g filter="url(#shadow)">
+    <rect x="725" y="466" width="230" height="68" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="2" />
+    <text x="840" y="493" text-anchor="middle" font-size="12.5" font-weight="700" fill="#991b1b">STAN_AWARYJNE_OTWIERANIE (5)</text>
+    <text x="840" y="513" text-anchor="middle" font-size="11.5" fill="#475569">Cel: 0° / 180° | LED: ON</text>
+  </g>
+
+  
+  <g transform="translate(100, 575)">
+    <rect x="0" y="0" width="14" height="14" rx="3" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5" />
+    <text x="22" y="11.5" font-size="11.5" fill="#475569">Stan spoczynku</text>
+
+    <rect x="140" y="0" width="14" height="14" rx="3" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5" />
+    <text x="162" y="11.5" font-size="11.5" fill="#475569">Stan ruchu (LED świeci)</text>
+
+    <rect x="330" y="0" width="14" height="14" rx="3" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5" />
+    <text x="352" y="11.5" font-size="11.5" fill="#475569">Zatrzymanie ręczne / PIR</text>
+
+    <rect x="520" y="0" width="14" height="14" rx="3" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5" />
+    <text x="542" y="11.5" font-size="11.5" fill="#475569">Reakcja awaryjna (nieprzerywalna)</text>
+  </g>
+</svg>
