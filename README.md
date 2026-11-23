@@ -1,119 +1,161 @@
-🚪 SmartGate
-Arduino Automatic Gate Control System
+🟢 SMARTGATE
+Inteligentny system automatycznego sterowania bramą
 
 <p align="center">
-<b>Smart • Automatic • Secure</b>
+<img src="https://img.shields.io/badge/ARDUINO-UNO-00979D?style=for-the-badge&logo=arduino&logoColor=white" />
+<img src="https://img.shields.io/badge/LANGUAGE-C%2B%2B-00599C?style=for-the-badge&logo=cplusplus&logoColor=white" />
+<img src="https://img.shields.io/badge/PROJECT-ELECTRONICS-22C55E?style=for-the-badge" />
+<img src="https://img.shields.io/badge/STATUS-IN%20DEVELOPMENT-orange?style=for-the-badge" />
 </p>
 
 <p align="center">
-An Arduino-based automatic gate system controlled by an infrared remote and equipped with a PIR motion sensor for enhanced safety.
+<b>⚡ Automatyka • 🛡️ Bezpieczeństwo • 🎮 Zdalne sterowanie</b>
 </p>
 
-📖 About the Project
+📌 O projekcie
 
-SmartGate is an automatic gate control system built using an Arduino UNO. The project uses two servo motors to simulate the opening and closing of a double-leaf gate.
+SmartGate to projekt inteligentnego systemu automatycznego sterowania bramą dwuskrzydłową, zrealizowany z wykorzystaniem mikrokontrolera Arduino UNO.
 
-The system can be controlled remotely using an infrared (IR) remote controller. Additionally, a PIR motion sensor monitors movement near the gate and automatically stops the gate while it is moving if motion is detected.
+Urządzenie umożliwia zdalne otwieranie, zamykanie oraz zatrzymywanie bramy za pomocą pilota na podczerwień. Dodatkowo zastosowany czujnik ruchu PIR monitoruje otoczenie i zatrzymuje pracę mechanizmu w przypadku wykrycia ruchu podczas przemieszczania się bramy.
 
-The project also implements smooth servo movement, allowing the gate to open and close gradually instead of moving instantly.
+System wykorzystuje dwa serwomechanizmy, które poruszają się synchronicznie, zapewniając płynne otwieranie i zamykanie obu skrzydeł.
 
-⚙️ Features
-🎮 IR Remote Control – Open, close, pause and resume the gate using the POWER button.
-🚶 Motion Detection – PIR sensor detects movement near the gate.
-🛑 Safety Stop – Gate movement is interrupted when motion is detected.
-🔄 Pause & Resume – Stop the gate at any position and resume movement in the selected direction.
-⚡ Smooth Movement – Servo motors move gradually, one degree at a time.
-💡 LED Indicator – LED indicates whether the gate is currently moving.
-🔧 Dual Servo Control – Two servos operate simultaneously to simulate a double-leaf gate.
-🧰 Components
-Component	Quantity
-Arduino UNO	1
-Servo Motor SG90	2
-PIR Motion Sensor	1
-IR Receiver	1
-IR Remote Controller	1
-LED	1
-Resistor	1
-Jumper Wires	As needed
-🔌 Pin Configuration
-Component	Arduino Pin
-Servo 1	D3
-Servo 2	D5
-IR Receiver	D10
-LED	D12
-PIR Sensor	D4
-🧠 How It Works
+💡 Głównym założeniem projektu jest stworzenie prostego, funkcjonalnego i możliwego do rozbudowy systemu automatyki bramowej.
+🖼️ Schemat projektu
 
-The system operates using a state-based control mechanism.
+<p align="center">
+<img src="circuit.png" width="90%" alt="Schemat połączeń systemu SmartGate">
+</p>
 
-Operating States
-State	Description
-0	Gate closed
-1	Gate open
-4	Gate opening
-5	Gate closing
-6	Gate paused
-Control Logic
-Pressing the POWER button starts opening or closing the gate.
-Pressing POWER again while the gate is moving pauses both servos.
-Pressing POWER after pausing resumes movement in the previously selected direction.
-When the gate reaches its target position, the system automatically changes to the appropriate final state.
-If the PIR sensor detects movement while the gate is moving, the system immediately pauses the gate.
-The LED lights up whenever the gate is in motion.
-📐 Gate Positions
-Gate Position	Servo 1	Servo 2
-Closed	0°	180°
-Open	90°	90°
-Paused	Current position	Current position
-💻 Technologies
-Arduino C++
-Arduino UNO
-Servo.h
-IRremote.hpp
-PIR Motion Detection
-State Machine Logic
-📚 Required Libraries
+<p align="center">
+<i>Schemat połączeń elektronicznych projektu SmartGate.</i>
+</p>
 
-Install the following libraries using the Arduino IDE Library Manager:
+⚙️ Najważniejsze funkcje
+Funkcja	Opis
+🎮 Sterowanie IR	Obsługa systemu za pomocą pilota
+🚪 Automatyczne otwieranie	Płynne otwieranie dwóch skrzydeł
+🔒 Automatyczne zamykanie	Powrót bramy do pozycji zamkniętej
+🛑 Zatrzymywanie	Możliwość zatrzymania bramy w dowolnym momencie ruchu
+🔄 Wznawianie ruchu	Kontynuowanie ruchu w wybranym kierunku
+👁️ Detekcja ruchu	Wykrywanie ruchu za pomocą czujnika PIR
+💡 Sygnalizacja LED	Informacja o aktualnym ruchu bramy
+🔌 Wykorzystane komponenty
+Komponent	Ilość	Zastosowanie
+Arduino UNO	1	Jednostka sterująca
+Serwomechanizm SG90	2	Sterowanie skrzydłami bramy
+Czujnik PIR	1	Detekcja ruchu
+Odbiornik IR	1	Odbiór sygnałów z pilota
+Pilot IR	1	Zdalne sterowanie
+Dioda LED	1	Sygnalizacja ruchu
+Rezystor	1	Ograniczenie prądu diody
+Przewody połączeniowe	-	Połączenia układu
+📍 Konfiguracja pinów Arduino
+Element	Pin Arduino
+Serwomechanizm 1	D3
+Serwomechanizm 2	D5
+Odbiornik podczerwieni	D10
+Dioda LED	D12
+Czujnik ruchu PIR	D4
+🧠 Logika działania systemu
 
-Servo – Servo motor control.
-IRremote – Infrared remote communication.
-🚀 Installation
-Clone this repository:
+System wykorzystuje mechanizm maszyny stanów (State Machine), który odpowiada za kontrolowanie aktualnego położenia bramy i wykonywanych operacji.
+
+🔄 Dostępne stany
+Stan	Nazwa	Opis
+0	ZAMKNIĘTA	Brama znajduje się w pozycji zamkniętej
+1	OTWARTA	Brama znajduje się w pozycji otwartej
+4	OTWIERANIE	Trwa proces otwierania
+5	ZAMYKANIE	Trwa proces zamykania
+6	ZATRZYMANIE	Brama zatrzymana w aktualnym położeniu
+🎮 Sterowanie pilotem
+
+Do obsługi systemu wykorzystywany jest przycisk POWER na pilocie IR.
+
+Aktualna sytuacja	Reakcja systemu
+Brama zamknięta	Rozpoczęcie otwierania
+Brama otwarta	Rozpoczęcie zamykania
+Brama w ruchu	Zatrzymanie
+Brama zatrzymana	Wznowienie ruchu
+👁️ System wykrywania ruchu
+
+Czujnik PIR stale monitoruje otoczenie bramy.
+
+Jeżeli podczas ruchu bramy czujnik wykryje obecność lub ruch, system:
+
+Odczytuje sygnał z czujnika PIR.
+Zatrzymuje oba serwomechanizmy.
+Zapamiętuje aktualne położenie skrzydeł.
+Przechodzi do stanu zatrzymania.
+📐 Pozycje serwomechanizmów
+Pozycja bramy	Serwo 1	Serwo 2
+🔒 Zamknięta	0°	180°
+🟢 Otwarta	90°	90°
+🛑 Zatrzymana	Aktualna pozycja	Aktualna pozycja
+
+Oba serwomechanizmy wykonują ruch synchronicznie, zmieniając położenie o jeden stopień co około 15 ms.
+
+💻 Wykorzystane technologie
+Arduino C++ – logika sterowania.
+Servo.h – obsługa serwomechanizmów.
+IRremote.hpp – komunikacja z pilotem IR.
+PIR Sensor – detekcja ruchu.
+State Machine – zarządzanie stanami systemu.
+📦 Wymagane biblioteki
+
+Przed uruchomieniem programu należy zainstalować:
+
+Servo
+IRremote
+
+Biblioteki można znaleźć w menedżerze bibliotek Arduino IDE.
+
+🚀 Uruchomienie projektu
+Pobierz repozytorium:
 bash
-git clone https://github.com/YOUR-USERNAME/SmartGate.git
+git clone https://github.com/TWOJ-LOGIN/SmartGate.git
 
-Open the .ino file in Arduino IDE.
-Install the required libraries.
-Connect all components according to the pin configuration.
-Select Arduino UNO as the target board.
-Upload the program to the Arduino.
-📸 Project Preview
-
-Add photos of your circuit, wiring diagram and working prototype here.
-
+Otwórz plik projektu w Arduino IDE.
+Zainstaluj wymagane biblioteki.
+Podłącz komponenty zgodnie ze schematem.
+Wybierz płytkę Arduino UNO.
+Wgraj program do mikrokontrolera.
+Uruchom układ i przetestuj sterowanie pilotem.
+📁 Struktura repozytorium
 text
 SmartGate/
 │
-├── SmartGate.ino
-├── README.md
-└── images/
-    ├── circuit.png
-    └── prototype.jpg
+├── 📂 images/
+│   ├── circuit.png
+│   └── prototype.jpg
+│
+├── 📄 SmartGate.ino
+└── 📄 README.md
 
-🔮 Future Improvements
-Add automatic gate closing after a configurable delay.
-Introduce obstacle detection in both opening and closing directions.
-Add an LCD or OLED display for system status.
-Implement adjustable servo movement speed.
-Add Bluetooth or Wi-Fi control.
-Introduce configurable remote control buttons.
-👨‍💻 Author
+🔮 Możliwości rozwoju
 
-Created as an Arduino electronics and programming project.
+Projekt można rozbudować o dodatkowe funkcjonalności:
+
+📱 Sterowanie przez Bluetooth.
+🌐 Sterowanie przez Wi-Fi.
+⏱️ Automatyczne zamykanie po określonym czasie.
+🖥️ Wyświetlacz LCD lub OLED prezentujący stan systemu.
+⚙️ Regulacja prędkości serwomechanizmów.
+🚨 Dodatkowy system wykrywania przeszkód.
+🔐 Zabezpieczenie dostępu do sterowania.
+🛡️ Uwagi dotyczące bezpieczeństwa
+
+Projekt ma charakter edukacyjny i demonstracyjny. Czujnik PIR nie zastępuje certyfikowanego systemu zabezpieczenia bramy przed przygnieceniem lub uderzeniem.
+
+Przy zastosowaniu rzeczywistej bramy konieczne jest wykorzystanie odpowiednich zabezpieczeń, czujników przeszkód oraz niezależnego układu awaryjnego zatrzymania.
+
+👨‍💻 Autor
+
+Projekt wykonany w ramach nauki programowania mikrokontrolerów Arduino oraz praktycznego zastosowania elektroniki i automatyki.
 
 <p align="center">
-<b>SMARTGATE</b>
-<br>
-<i>Making gate automation simple.</i>
+<img src="https://img.shields.io/badge/POWERED%20BY-ARDUINO-00979D?style=for-the-badge&logo=arduino&logoColor=white" />
 </p>
+
+<h3 align="center">🟢 SMARTGATE</h3>
+<p align="center"><i>Przyszłość automatyki zaczyna się od prostych rozwiązań.</i></p>
