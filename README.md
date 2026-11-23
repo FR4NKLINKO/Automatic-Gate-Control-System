@@ -24,10 +24,6 @@ System wykorzystuje dwa serwomechanizmy, które poruszają się synchronicznie, 
 🖼️ Schemat projektu
 
 <p align="center">
-<img src="circuit.png" width="90%" alt="Schemat połączeń systemu SmartGate">
-</p>
-
-<p align="center">
 <i>Schemat połączeń elektronicznych projektu SmartGate.</i>
 </p>
 
@@ -153,9 +149,6 @@ Przy zastosowaniu rzeczywistej bramy konieczne jest wykorzystanie odpowiednich z
 
 Projekt wykonany w ramach nauki programowania mikrokontrolerów Arduino oraz praktycznego zastosowania elektroniki i automatyki.
 
-<p align="center">
-<img src="https://img.shields.io/badge/POWERED%20BY-ARDUINO-00979D?style=for-the-badge&logo=arduino&logoColor=white" />
-</p>
 
 <h3 align="center">🟢 SMARTGATE</h3>
 <p align="center"><i>Przyszłość automatyki zaczyna się od prostych rozwiązań.</i></p>
